@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card-show d-flex">
+        <%= image_tag "rabbit-charlie", width: 200 %>
+        <div class="card-info d-flex flex-column justify-content-between">
+          <div class="info">
+            <h1>
+              <%= @pet.name %>
+            </h1>
+            <small>
+              <%= @pet.description %>
+              <%= @pet.breed %>
+            </small>
+          </div>
+          <div class="d-flex align-self-end">
+            <small> Let me be your emotional support </small><i class="mx-3 fa-solid fa-paw"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
