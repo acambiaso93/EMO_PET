@@ -1,0 +1,11 @@
+<nav class="navbar sticky-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fa-solid fa-otter"></i>      EmoPet
+    </a>
+    <form class="d-flex">
+     <%= link_to "Register", new_user_registration_path, class:"btn btn-sm btn-outline-secondary me-2" %>
+     <%= link_to "Login", new_user_session_path, class:"btn btn-outline-success me-2" %>
+    </form>
+  </div>
+</nav>
