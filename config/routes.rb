@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   root "pets#index"
-  
+
   resources :pets, only: [:index, :show, :new, :create]
 
 end
