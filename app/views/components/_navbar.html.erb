@@ -3,9 +3,30 @@
     <a class="navbar-brand" href="#">
       <i class="fa-solid fa-otter"></i>      EmoPet
     </a>
-    <form class="d-flex">
-     <%= link_to "Register", new_user_registration_path, class:"btn btn-sm btn-outline-secondary me-2" %>
-     <%= link_to "Login", new_user_session_path, class:"btn btn-outline-success me-2" %>
-    </form>
+    <% if user_signed_in? %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <%= link_to "Log out", destroy_user_session_path, class: "nav-link navbar-nav me-auto", data: {turbo_method: :delete}%>
+      <%= image_tag "avatar1.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item dropdown">
+            <div class="dropdown-menu-end text-bg-dark" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", "#", class: "dropdown-item" %>
+              <%= link_to "Bookings", "#", class: "dropdown-item" %>
+              <%= link_to "Add a Pet", "#", class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
+    </div>
+      <% else %>
+          <div >
+            <%= link_to "Register", new_user_registration_path, class:"btn btn-sm btn-outline-secondary me-2" %>
+            <%= link_to "Login", new_user_session_path, class:"btn btn-outline-success me-2" %>
+          </div>
+        <% end  %>
   </div>
 </nav>
