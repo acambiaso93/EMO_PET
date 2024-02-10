@@ -8,6 +8,7 @@
           <button class="btn btn-primary">See your status</button>
           <p class="card-text"><%= link_to 'See your status', booking_path(booking), class: 'btn btn-primary' %></p>
           <p class="card-text"><%= link_to 'Add a review', new_booking_review_path(booking), class: 'btn btn-primary' %></p>
+          <%= link_to 'Delete', booking_path, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
