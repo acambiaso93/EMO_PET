@@ -1,3 +1,3 @@
 class Pet < ApplicationRecord
-  has_many :booking
+  has_many :booking, dependent: :destroy
 end
