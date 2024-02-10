@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_booking, only: [:destroy]
 
   def show
     @bookings = Booking.find(params[:id])
@@ -8,6 +9,11 @@ class BookingsController < ApplicationController
 
   def index
     @my_bookings = current_user.bookings
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
   end
 
   def create
@@ -21,6 +27,10 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def set_booking
+    @booking = current_user.bookings.find(params[:id])
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :pet_id)
