@@ -17,7 +17,7 @@
             <li class="nav-item dropdown">
               <ul class="dropdown-menu-toggle text-bg-dark" aria-labelledby="navbarDropdown">
                 <%= link_to "Profile", "#", class: "dropdown-item" %>
-                <%= link_to "Bookings", "#", class: "dropdown-item" %>
+                <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
                 <%= link_to "Add a Pet", new_pet_path, class: "dropdown-item" %>
                 <%= link_to "Log out", destroy_user_session_path, class: "nav-link navbar-nav", data: {turbo_method: :delete}%>
               </ul>
