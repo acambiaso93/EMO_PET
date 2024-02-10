@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   resources :pets, only: [:index, :show, :new, :create]
 
-  resources :bookings, only:[:index, :create, :update, :destroy]
+  resources :bookings, only: [:index, :create, :update, :destroy] do
+    resources :reviews, only: [:new, :create, :show]
+  end
 end
