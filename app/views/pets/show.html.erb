@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-12 col-lg-8">
       <div class="card-show d-flex">
         <%= image_tag "rabbit-charlie", width: 400 %>
         <div class="card-info d-flex flex-column justify-content-between w-100">
@@ -20,13 +20,14 @@
         </div>
       </div>
     </div>
+
+    <div class="col-12 col-lg-4">
+      <div class="card-booking">
+      <h3> When do you want to have me? </h3>
+      <%= render "bookings/form", pet: @pet, booking: @booking %>
+    </div>
   </div>
 
-  <div class="card-booking d-flex">
-    <%= render "bookings/form", pet: @pet, booking: @booking %>
-    <div class="btn btn-primary">
-      Book me
-    </div>
 
   </div>
 </div>
