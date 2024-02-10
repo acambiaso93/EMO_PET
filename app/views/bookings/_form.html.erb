@@ -1,7 +1,9 @@
-<%= simple_form_for [pet, booking], url: pet_bookings_path(pet, booking), html: { method: :post } do |f| %>
+<%= simple_form_for [booking], url: bookings_path(booking), html: { method: :post } do |f| %>
   <div class="w-100">
     <%= f.input :start_date %>
     <%= f.input :end_date %>
+    <%= f.hidden_field :pet_id, value: params[:id] %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="d-flex w-100">
       <%= f.submit "Book me", class: "btn btn-primary w-100" %>
     </div>
