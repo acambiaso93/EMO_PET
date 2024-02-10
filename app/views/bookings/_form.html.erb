@@ -1,5 +1,9 @@
 <%= simple_form_for [pet, booking], url: pet_bookings_path(pet, booking), html: { method: :post } do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit %>
+  <div class="w-100">
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <div class="d-flex w-100">
+      <%= f.submit "Book me", class: "btn btn-primary w-100" %>
+    </div>
+  </div>
 <% end %>
