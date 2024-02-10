@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  has_many :booking, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   validates :name, presence: true
   validates :breed, presence: true
