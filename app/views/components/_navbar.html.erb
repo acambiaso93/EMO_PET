@@ -1,32 +1,35 @@
 <nav class="navbar sticky-top navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="fa-solid fa-otter"></i>      EmoPet
-    </a>
+  <div class="container-fluid d-flex space-between">
+    <div>
+      <a class="navbar-brand">
+        <%= link_to '<i class="fa-solid fa-otter"></i>  EmoPet'.html_safe, root_path %>
+      </a>
+    </div>
+
     <% if user_signed_in? %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <%= image_tag "avatar1.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       </button>
 
-
-      <%= link_to "Log out", destroy_user_session_path, class: "nav-link navbar-nav me-auto", data: {turbo_method: :delete}%>
-      <%= image_tag "avatar1.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item dropdown">
-            <div class="dropdown-menu-end text-bg-dark" aria-labelledby="navbarDropdown">
-              <%= link_to "Profile", "#", class: "dropdown-item" %>
-              <%= link_to "Bookings", "#", class: "dropdown-item" %>
-              <%= link_to "Add a Pet", "#", class: "dropdown-item" %>
-            </div>
-          </li>
-        </ul>
-    </div>
-      <% else %>
-          <div >
-            <%= link_to "Register", new_user_registration_path, class:"btn btn-sm btn-outline-secondary me-2" %>
-            <%= link_to "Login", new_user_session_path, class:"btn btn-outline-success me-2" %>
-          </div>
-        <% end  %>
+        <div class="d-flex justify-content-end">
+          <ul class="navbar-nav ">
+            <li class="nav-item dropdown">
+              <ul class="dropdown-menu-toggle text-bg-dark" aria-labelledby="navbarDropdown">
+                <%= link_to "Profile", "#", class: "dropdown-item" %>
+                <%= link_to "Bookings", "#", class: "dropdown-item" %>
+                <%= link_to "Add a Pet", new_pet_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, class: "nav-link navbar-nav", data: {turbo_method: :delete}%>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <div >
+        <%= link_to "Register", new_user_registration_path, class:"btn btn-sm btn-outline-secondary me-2" %>
+        <%= link_to "Login", new_user_session_path, class:"btn btn-outline-success me-2" %>
+      </div>
+    <% end  %>
   </div>
 </nav>
