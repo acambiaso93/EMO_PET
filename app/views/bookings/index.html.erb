@@ -1,0 +1,13 @@
+<div class="row">
+  <% @my_bookings.each do |booking| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag booking.pet.image_url, class: "card-img-top", alt: booking.pet.name %>
+        <div class="card-body">
+          <h5 class="card-title"><%= booking.pet.name %></h5>
+          <p class="card-text"><%= link_to 'See more details', pet_path(booking.pet), class: 'btn btn-primary' %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
