@@ -16,9 +16,23 @@ class BookingsController < ApplicationController
     redirect_to bookings_url, notice: 'Booking was successfully destroyed.'
   end
 
+  def create
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render :template, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_booking
     @booking = current_user.bookings.find(params[:id])
+  end
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date, :pet_id)
   end
 end
