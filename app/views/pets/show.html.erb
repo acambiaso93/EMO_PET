@@ -35,6 +35,7 @@
           <p>no reviews</p>
         <% else %>
           <% @pet.bookings.each do |booking| %>
+           <% next if booking.review.nil? %>
             <%= render "reviews/card", review: booking.review %>
           <% end %>
         <% end %>
