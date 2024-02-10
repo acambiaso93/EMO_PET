@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_201330) do
     t.boolean "available_for_rent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_url"
     t.string "address"
+    t.string "image_url"
   end
 
   create_table "users", force: :cascade do |t|
