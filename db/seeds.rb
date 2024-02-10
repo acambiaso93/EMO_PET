@@ -9,6 +9,10 @@
 #   end
 
 Pet.destroy_all
+User.destroy_all
+Booking.destroy_all
+
+puts 'Creating pets...'
 
 animals_data = [
   { name: 'Buddy', breed: 'Dog', description: 'Buddy is a friendly and playful Golden Retriever. He loves going for long walks in the park and playing fetch with his favorite tennis ball.' },
@@ -41,5 +45,36 @@ animals_data.each do |animal_data|
   )
 end
 
+puts 'Pets created successfully!'
+
+puts 'Creating users...'
+
+10.times do |n|
+  User.create!(
+    email: "user#{n+1}@example.com",
+    password: 'password',
+    password_confirmation: 'password'
+  )
+end
+
+puts 'Users created successfully!'
+
+puts 'Creating bookings...'
+10.times do |n|
+  user = User.offset(rand(User.count)).first
+
+  pet = Pet.offset(rand(Pet.count)).first
+
+  start_date = Faker::Time.between_dates(from: Date.today, to: Date.today + 30, period: :day)
+  end_date = start_date + rand(1..7).days
+
+  Booking.create!(
+    pet: pet,
+    user: user,
+    start_date: start_date,
+    end_date: end_date
+  )
+end
+puts 'Bookings created successfully!'
 
 puts 'Seeding complete!'
