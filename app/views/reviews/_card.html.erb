@@ -1,4 +1,6 @@
-<div>
-  <%= review.comment %>
-  <%= review.rating %>
+<div class="card-reviews">
+  <p class="text-secondary">user: <%= review.user_id %></p>
+  <%= review.rating %><i class="fa-solid fa-star text-black"></i>
+  <p class="px-2"><%= review.comment %></p>
+
 </div>
