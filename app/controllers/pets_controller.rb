@@ -2,7 +2,19 @@ class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   def show
     @pet = Pet.find(params[:id])
+    pet_for_marker = Pet.where(id: params[:id])
     @booking = Booking.new
+    @pets = Pet.all
+    @markers = pet_for_marker.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {pet: pet})
+      }
+    end
+  end
+
+  def index
     @pets = Pet.all
 
     @markers = @pets.geocoded.map do |pet|
@@ -11,10 +23,6 @@ class PetsController < ApplicationController
         lng: pet.longitude
       }
     end
-  end
-
-  def index
-    @pets = Pet.all
   end
 
   def new
