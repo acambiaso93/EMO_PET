@@ -1,8 +1,8 @@
 class Pet < ApplicationRecord
   has_many :bookings, dependent: :destroy
 
-  validates :name, presence: true
-  validates :breed, presence: true
-  validates :description, presence: true
-  validates :image_url, presence: true
+  validates :name, :breed, :description, :address, :image_url, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
