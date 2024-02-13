@@ -15,7 +15,7 @@ Booking.destroy_all
 puts 'Creating pets...'
 
 animals_data = [
-  { name: 'Buddy', breed: 'Dog', description: 'Buddy is a friendly and playful Golden Retriever. He loves going for long walks in the park and playing fetch with his favorite tennis ball.', image_url: "https://www.southernliving.com/thmb/9E2guP65DZP_ZnUP13pcVG8Sfmc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1285438779-2000-9ea25aa777df42e6a046b10d52b286b7.jpg" },
+  { name: 'Buddy', breed: 'Dog', description: 'Buddy is a friendly and playful Golden Retriever. He loves going for long walks in the park and playing fetch with his favorite tennis ball.', image_url: "https://www.southernliving.com/thmb/9E2guP65DZP_ZnUP13pcVG8Sfmc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1285438779-2000-9ea25aa777df42e6a046b10d52b286b7.jpg"  },
   { name: 'Luna', breed: 'Cat', description: 'Luna is an elegant and mysterious Persian Cat. She enjoys lounging in sunbeams and observing the world from her lofty perch.', image_url: "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"},
   { name: 'Charlie', breed: 'Rabbit', description: 'Charlie is a cute and fluffy Holland Lop Rabbit. He adores munching on fresh greens and hopping around in his spacious enclosure.', image_url: "https://storage.googleapis.com/pod_public/1300/169106.jpg" },
   { name: 'Milo', breed: 'Parrot', description: 'Milo is a colorful and talkative Macaw Parrot. He loves showing off his impressive vocabulary and singing along to his favorite tunes.', image_url: "https://gardenandgun.com/wp-content/uploads/2023/03/parrot.jpg" },
@@ -38,7 +38,7 @@ animals_data.each do |animal_data|
     name: animal_data[:name],
     breed: animal_data[:breed],
     description: animal_data[:description],
-    image_url: animal_data[:image_url]
+    image_url: animal_data[:image_url],
   )
 end
 

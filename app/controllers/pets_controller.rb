@@ -2,8 +2,15 @@ class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   def show
     @pet = Pet.find(params[:id])
-
     @booking = Booking.new
+    @pets = Pet.all
+
+    @markers = @pets.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude
+      }
+    end
   end
 
   def index
@@ -27,6 +34,6 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :description, :image_url)
+    params.require(:pet).permit(:name, :breed, :description, :address, :image_url)
   end
 end
