@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 gem "faker"
 
+gem "pg_search"
+
 gem "bootstrap", "~> 5.2"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
