@@ -8,6 +8,7 @@ pg_search_scope :search_by_name_and_breed_and_description,
   }
 
   has_many :bookings, dependent: :destroy
+  belongs_to :user
 
   validates :name, :breed, :description, :image_url, presence: true
 
