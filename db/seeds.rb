@@ -15,6 +15,7 @@ Booking.destroy_all
 puts 'Creating pets...'
 
 animals_data = [
+
   { name: 'Buddy', breed: 'Dog', description: 'Buddy is a friendly and playful Golden Retriever. He loves going for long walks in the park and playing fetch with his favorite tennis ball.', image_url: "https://www.southernliving.com/thmb/9E2guP65DZP_ZnUP13pcVG8Sfmc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1285438779-2000-9ea25aa777df42e6a046b10d52b286b7.jpg"  },
   { name: 'Luna', breed: 'Cat', description: 'Luna is an elegant and mysterious Persian Cat. She enjoys lounging in sunbeams and observing the world from her lofty perch.', image_url: "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"},
   { name: 'Charlie', breed: 'Rabbit', description: 'Charlie is a cute and fluffy Holland Lop Rabbit. He adores munching on fresh greens and hopping around in his spacious enclosure.', image_url: "https://storage.googleapis.com/pod_public/1300/169106.jpg" },
@@ -39,6 +40,7 @@ animals_data.each do |animal_data|
     breed: animal_data[:breed],
     description: animal_data[:description],
     image_url: animal_data[:image_url],
+    address: animal_data[:address]
   )
 end
 
@@ -48,7 +50,7 @@ puts 'Creating users...'
 
 10.times do |n|
   User.create!(
-    email: "user#{n+1}@example.com",
+    email: "user#{n + 1}@example.com",
     password: 'password',
     password_confirmation: 'password'
   )
