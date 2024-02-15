@@ -1,4 +1,68 @@
-<h1>Welcome to Dashoard</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <strong>MENU</strong>
+      <div class="my-4">
+        <div class="d-flex align-items-center my-4">
+          <i class="fa-solid fa-calendar mx-2"></i><p class="my-0">My Booking</p>
+        </div>
+
+
+        <div class="d-flex align-items-center my-4">
+          <i class="fa-solid fa-paw mx-2"></i><p class="my-0">My Pets</p>
+        </div>
+
+
+        <div class="d-flex align-items-center my-4">
+          <i class="fa-solid fa-message mx-2"></i><p class="my-0">My Messages</p>
+        </div>
+
+      </div>
+      <br>
+      <p>Account & Profile</p>
+      <strong>Sign out</strong>
+    </div>
+
+    <div class="col-9">
+      <h1>Welcome username!</h1>
+
+      <p>My Bookings</p>
+
+        <div class="pet-container">
+          <% @my_bookings.each do |booking| %>
+            <%= link_to booking_path(booking), class: "pet-card" do %>
+              <%= image_tag booking.pet.image_url, class: "pet-image" %>
+              <div class="pet-text">
+                <h2><%= booking.pet.name %></h2>
+                <p><%= booking.pet.breed %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <p>My Pets</p>
+
+        <div class="pet-container">
+          <% @my_pets.each do |pet| %>
+            <%= link_to pet_path(pet), class: "pet-card" do %>
+              <%= image_tag pet.image_url, class: "pet-image" %>
+              <div class="pet-text">
+                <h2><%= pet.name %></h2>
+                <p><%= pet.breed %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+</div>
+
 <div class="row">
   <% @my_bookings.each do |booking| %>
     <div class="col-md-4 mb-4">
