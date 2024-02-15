@@ -1,5 +1,12 @@
-<footer class="footer">
+<footer class="footer bg-dark">
   <div class="container">
-    <span class="text-muted">© <%= Time.now.year %> All emotional rights reserved.</span>
+    <div>
+      <%= mail_to "#", "Contact Us" do %>
+        <i class="fa-regular fa-envelope"></i>
+      <% end %>
+      <a class="fa-brands fa-facebook" href="http://www.facebook.com"> </a>
+      <a class="fa-brands fa-twitter" href="http://www.twitter.com"> </a>
+    </div>
+    <span class="text-color-white">© <%= Time.now.year %> All emotional rights reserved.</span>
   </div>
 </footer>
