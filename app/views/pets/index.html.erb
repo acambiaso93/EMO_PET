@@ -1,6 +1,6 @@
  <div class="container-main">
   <div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
+  <div class="col-sm-8">
     <%= form_with url: pets_path, method: :get, class: "search__container" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -9,6 +9,8 @@
             autocomplete: "off"
         %>
     <% end %>
+    <button class="map-button" onclick="scrollToMap()">...or take me to map</button>
+</div>
   </div>
 </div>
   <div class="pet-container">
@@ -29,3 +31,11 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
 </div>
+
+<script>
+  function scrollToMap() {
+    const mapSection = document.querySelector('.my-3');
+    const yOffset = mapSection.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: yOffset, behavior: 'smooth' });
+  }
+</script>
