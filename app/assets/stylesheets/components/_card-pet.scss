@@ -5,8 +5,10 @@
 .pet-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 10px;
+  justify-items: center;
+  gap: 16px;
   width: 100%;
+  padding: 16px;
 }
 
 .pet-card {
@@ -15,6 +17,7 @@
   border-radius: 10px;
   min-height: 500px;
   max-height: 500px;
+  max-width: 400px;
 }
 
 .pet-image {
