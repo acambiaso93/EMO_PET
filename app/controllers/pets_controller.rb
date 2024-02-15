@@ -14,7 +14,10 @@ class PetsController < ApplicationController
   end
 
   def index
-    @pets = Pet.all
+      @pets = Pet.all
+      if params[:query].present?
+        @pets = Pet.search_by_name_and_breed_and_description(params[:query])
+      end
   end
 
   def new

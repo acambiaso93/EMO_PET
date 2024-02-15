@@ -1,4 +1,15 @@
  <div class="container-main">
+  <div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: pets_path, method: :get, class: "search__container" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "search__input",
+            placeholder: "Search for a pet"
+        %>
+    <% end %>
+  </div>
+</div>
   <div class="pet-container">
     <% @pets.each do |pet| %>
       <%= link_to pet_path(pet), class: "pet-card" do %>
