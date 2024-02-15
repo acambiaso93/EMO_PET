@@ -18,8 +18,11 @@
         </div>
         <div class="form-group">
           <%= form.label :address %>
-          <%= form.text_area :address, class: "form-control" %>
+          <%= form.text_field :address, class: "form-control" %>
         </div>
+
+        <%= form.hidden_field :user_id, value: current_user.id %>
+
         <div class="form-group">
           <%= form.label :image_url %>
           <%= form.text_field :image_url, class: "form-control" %>
