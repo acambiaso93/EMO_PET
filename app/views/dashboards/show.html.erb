@@ -1,0 +1,16 @@
+<h1>Welcome to Dashoard</h1>
+<div class="row">
+  <% @my_bookings.each do |booking| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= image_tag booking.pet.image_url, class: "card-img-top", alt: booking.pet.name %>
+        <div class="card-body">
+          <h5 class="card-title"><%= booking.pet.name %></h5>
+          <p class="card-text"><%= link_to 'See your status', booking_path(booking), class: 'btn btn-primary' %></p>
+          <p class="card-text"><%= link_to 'Add a review', new_booking_review_path(booking), class: 'btn btn-primary' %></p>
+          <p class="card-text"><%= link_to 'Delete', booking_path(booking), data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
