@@ -12,6 +12,18 @@ Pet.destroy_all
 User.destroy_all
 Booking.destroy_all
 
+puts 'Creating users...'
+
+10.times do |n|
+  User.create!(
+    email: "user#{n + 1}@example.com",
+    password: 'password',
+    password_confirmation: 'password'
+  )
+end
+
+puts 'Users created successfully!'
+
 puts 'Creating pets...'
 
 animals_data = [
@@ -39,23 +51,12 @@ animals_data.each do |animal_data|
     breed: animal_data[:breed],
     description: animal_data[:description],
     image_url: animal_data[:image_url],
-    address: animal_data[:address]
+    address: animal_data[:address],
+    user: User.offset(rand(User.count)).first
   )
 end
 
 puts 'Pets created successfully!'
-
-puts 'Creating users...'
-
-10.times do |n|
-  User.create!(
-    email: "user#{n + 1}@example.com",
-    password: 'password',
-    password_confirmation: 'password'
-  )
-end
-
-puts 'Users created successfully!'
 
 puts 'Creating bookings...'
 10.times do |n|
