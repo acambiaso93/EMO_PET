@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
+
   def show
     @pet = Pet.find(params[:id])
     pet_for_marker = Pet.where(id: params[:id])
@@ -36,9 +37,10 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
+    @pet.user = current_user
 
     if @pet.save
-      redirect_to @pet, redirect_to: root_path
+      redirect_to pet_path(@pet)
     else
       render :new
     end
@@ -47,6 +49,6 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :description, :address, :image_url)
+    params.require(:pet).permit(:name, :breed, :description, :address, :image_url, :photo)
   end
 end
