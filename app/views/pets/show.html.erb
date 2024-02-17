@@ -1,29 +1,49 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-8">
+      <div class="my-3">
+        <h1><%= @pet.name %></h1>
+      </div>
+
       <div class="card-show d-flex">
-        <%= image_tag @pet.image_url %>
+
+        <% if @pet.image_url.nil? %>
+          <%= cl_image_tag @pet.photo.key, class: "pet-image"%>
+        <% else %>
+          <%= image_tag @pet.image_url, class: "pet-image" %>
+        <% end %>
+
         <div class="card-info d-flex flex-column">
           <div class="my-2">
             <h1>Meet <%= @pet.name %>!</h1><small class="tag"><%= @pet.breed %></small>
           </div>
           <div class="info d-flex flex-column shrink">
             <small class="mt-3">
-              <strong class="mt-2">Description: </strong> <br>
-                <%= @pet.description %> <br>
-              <strong class="mt-2">Address: </strong> <br>
-                <%= @pet.address %>
+              <strong> <% breed_name = @pet.breed.downcase %>
+                   <% if ['a', 'e', 'i', 'o', 'u'].include?(breed_name[0]) %>
+                    I am an <%= breed_name %> and this is where I live:
+                   <% else %>
+                    I am a <%= breed_name %> and this is where I live:
+                  <% end %></strong><br>
+              <%= @pet.address %> <br><br>
+              <strong>This is what they say about me: </strong> <br>
+              <%= @pet.description %>
+
             </small>
           </div>
-
         </div>
       </div>
     </div>
 
     <div class="col-12 col-lg-4">
       <div class="card-booking">
-        <h3> When do you want to have me? </h3>
-        <%= render "bookings/form", pet: @pet, booking: @booking %>
+        <h3>
+          <span class="bookmark">Book me!</span>
+          When do you want to have me?
+        </h3>
+        <div id="booking-form" style="display: none;">
+          <%= render "bookings/form", pet: @pet, booking: @booking %>
+        </div>
       </div>
     </div>
 
@@ -52,5 +72,33 @@
       </div>
     </div>
 
+    <div>
+      <%= link_to "Kill my pet", pet_path(@pet), data: {turbo_method: :delete, confirm: 'Are you sure?'} if policy(@pet).destroy? %>
+    </div>
+
+  </div>
+
+  <h3>You can pick me up here</h3>
+  <div class="my-3" style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
+
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const bookmark = document.querySelector('.bookmark');
+    const bookingForm = document.getElementById('booking-form');
+
+    bookmark.addEventListener('click', function() {
+      if (bookingForm.style.display === 'none') {
+        bookingForm.style.display = 'block';
+      } else {
+        bookingForm.style.display = 'none';
+      }
+    });
+  });
+</script>
