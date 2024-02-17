@@ -1,10 +1,12 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_booking, only: [:destroy]
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
 
   def show
-    authorize @booking
-    @bookings = Booking.find(params[:id])
+    @booking = Booking.find(params[:id])
+    @pet = @booking.pet
     @booking = Booking.new
   end
 
