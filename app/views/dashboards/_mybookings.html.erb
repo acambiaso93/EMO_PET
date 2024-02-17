@@ -1,0 +1,88 @@
+<div class="d-flex flex-column rounded-5 showcard">
+          <div class="ps-4 py-3 border-bottom-custom">
+            <strong> WELCOME !</strong></div>
+            <div class="d-flex showcard-row border-bottom-custom">
+              <div class="d-flex flex-column justify-content-between">
+                <div class="ps-4 py-3 border-bottom-custom">
+                  <strong> MY BOOKINGS </strong></div>
+                    <% @my_bookings.each do |booking| %>
+
+                      <div class="card-my-bookings d-flex">
+                        <div>
+                          <% if booking.pet.image_url.nil? %>
+                            <%= cl_image_tag booking.pet.photo.key, class: "img-my-bookings" %>
+                          <% else %>
+                            <%= image_tag booking.pet.image_url, class: "img-my-bookings" %>
+                          <% end %>
+                        </div>
+
+                        <div class="info-my-bookings mx-3 border-bottom-custom w-100">
+                          <h2><%= booking.pet.name %></h2>
+                          <p><%= booking.pet.breed %></p>
+
+                        <button class="m-4 btn btn-outline-dark showcard-form-button d-flex px-4">
+                          <div class="d-flex align-items-center">
+                          <p class="my-0"> <%= link_to "ADD A REVIEW", new_booking_review_path(booking) %> </p></div></button>
+                          </div>
+                      <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+
+                        </div>
+                      </div>
+
+                      </div>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div>
+          <% @my_pets.each do |pet| %>
+            <%= link_to pet_path(pet), class: "pet-card" do %>
+
+              <% if pet.image_url.nil? %>
+                <%= cl_image_tag pet.photo.key, class: "pet-image"%>
+              <% else %>
+                <%= image_tag pet.image_url, class: "pet-image" %>
+              <% end %>
+
+              <div class="pet-text">
+                <h2><%= pet.name %></h2>
+                <p><%= pet.breed %></p>
+              </div>
+               <div>
+                <a>
+                  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+                </a>
+              </div>
+            <% end %>
+          <% end %>
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>

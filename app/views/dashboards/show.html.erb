@@ -1,12 +1,14 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div id= "menu" class="col-3">
       <strong>MENU</strong>
 
-          <button class="dashboard-button d-flex">
+
+        <button class="dashboard-button d-flex">
+          <div class="d-flex align-items-center">
             <i class="fa-solid fa-calendar mx-2"></i><p class="my-0">MY BOOKINGS</p>
-          </button>
+          </div>
+        </button>
 
 
         <button class="dashboard-button d-flex">
@@ -18,7 +20,7 @@
 
         <button class="dashboard-button d-flex">
           <div class="d-flex align-items-center">
-            <i class="fa-solid fa-message mx-2"></i><p class="my-0">ADD A NEW PET</p>
+            <i class="fa-solid fa-message mx-2"></i><p class="my-0"> <%= link_to "ADD A NEW PET", new_pet_path, style: "color: black;" %> </p>
           </div>
         </button>
 
@@ -29,64 +31,86 @@
       <strong id="booking-navbar"> <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete} %></strong>
     </div>
 
-    <div class="col-9">
-      <h1>Welcome username!</h1>
+    <div id="bookings" class="col-9">
+      <div class="container">
+        <div class="d-flex flex-column rounded-5 showcard">
+          <div class="ps-4 py-3 border-bottom-custom">
+            <strong> WELCOME !</strong>
+          </div>
 
-      <h2>My Bookings</h2>
+          <div class="ps-4 py-3 border-bottom-custom">
+            <strong> MY BOOKINGS </strong>
+          </div>
 
-        <div class="pet-container">
-          <% @my_bookings.each do |booking| %>
-              <div class="card-my-bookings">
-              </div>
+          <div class="border-bottom-custom">
+            <% @my_bookings.each do |booking| %>
+              <div class="card-my-bookings d-flex border-bottom-custom">
+                  <div>
+                    <% if booking.pet.image_url.nil? %>
+                      <%= cl_image_tag booking.pet.photo.key, class: "img-my-bookings" %>
+                    <% else %>
+                      <%= image_tag booking.pet.image_url, class: "img-my-bookings" %>
+                    <% end %>
+                  </div>
 
-              <% if booking.pet.image_url.nil? %>
-                <%= cl_image_tag booking.pet.photo.key, id: "booking-img", class: "pet-image"%>
-              <% else %>
-                <%= image_tag booking.pet.image_url, class: "pet-image" %>
-              <% end %>
+                <div class="info-my-bookings m-3">
+                  <h2><%= booking.pet.name %></h2>
+                  <p><%= booking.pet.breed %></p>
 
-              <div class="pet-text">
-                <h2><%= booking.pet.name %></h2>
-                <p><%= booking.pet.breed %></p>
-              </div>
-              <div>
-                <a>
-                  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
-                </a>
-              </div>
-          <% end %>
-        </div>
+                  <div class="inside d-flex justify-content-between align-items-center">
+                    <button class="m-4 btn btn-dark showcard-form-button d-flex px-4">
+                      <div class="d-flex align-items-center">
+                        <p class="my-0"> <%= link_to "ADD A REVIEW", new_booking_review_path(booking) %> </p>
+                      </div>
+                    </button>
 
+                    <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
 
-        <p>My Pets</p>
+                  </div>
 
-        <div class="pet-container">
-          <% @my_pets.each do |pet| %>
-            <%= link_to pet_path(pet), class: "pet-card" do %>
+                </div>
 
-              <% if pet.image_url.nil? %>
-                <%= cl_image_tag pet.photo.key, class: "pet-image"%>
-              <% else %>
-                <%= image_tag pet.image_url, class: "pet-image" %>
-              <% end %>
-
-              <div class="pet-text">
-                <h2><%= pet.name %></h2>
-                <p><%= pet.breed %></p>
-              </div>
-               <div>
-                <a>
-                  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
-                </a>
               </div>
             <% end %>
-          <% end %>
+
+          </div>
+
+          <div class="ps-4 py-3 border-bottom-custom">
+            <strong> MY PETS </strong>
+          </div>
+          <div class="border-bottom-custom">
+            <% @my_pets.each do |pet| %>
+
+              <div class="card-my-bookings d-flex border-bottom-custom">
+                  <div>
+                    <% if pet.image_url.nil? %>
+                      <%= cl_image_tag pet.photo.key, class: "img-my-bookings" %>
+                    <% else %>
+                      <%= image_tag pet.image_url, class: "img-my-bookings" %>
+                    <% end %>
+                  </div>
+
+                <div class="info-my-bookings m-3">
+                  <h2><%= pet.name %></h2>
+                  <p><%= pet.breed %></p>
+
+                  <div class="inside d-flex justify-content-between align-items-center">
+
+                    <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+
+                  </div>
+
+                </div>
+
+              </div>
+            <% end %>
+          </div>
+
 
         </div>
+      </div>
 
     </div>
+    </div>
 
-  </div>
-
-</div>
 </div>

@@ -6,6 +6,7 @@
 <div class="d-flex flex-column rounded-5 showcard">
   <div class="ps-4 py-3 border-bottom-custom">
     <span><%= @pet.name %></span></div>
+
   <div class="d-flex showcard-row border-bottom-custom justify-content-between
   ">
     <div class="d-flex flex-column justify-content-between">
@@ -19,6 +20,7 @@
       <%= @pet.address %> <br><br>
       This is what they say about me:<br>
       <%= @pet.description %></div>
+
 <a href=<%= new_booking_path %> class="m-4 btn btn-outline-dark w-50 showcard-form-button">BOOK ME</a>    </div>
      <div>
       <% if @pet.image_url.nil? %>
@@ -45,5 +47,6 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div></div>
 </div>
+
 <%= link_to "Kill my pet", pet_path(@pet), class: "m-4 btn btn-outline-dark w-25 showcard-delete-button", data: {turbo_method: :delete, confirm: 'Are you sure?'} if policy(@pet).destroy?  %>
 </div>
