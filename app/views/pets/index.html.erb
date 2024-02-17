@@ -16,7 +16,14 @@
   <div class="pet-container">
     <% @pets.each do |pet| %>
       <%= link_to pet_path(pet), class: "pet-card" do %>
-        <%= image_tag pet.image_url, class: "pet-image" %>
+        <% if pet.image_url.empty? %>
+          <%= cl_image_tag pet.photo.key, class: "pet-image"%>
+
+        <% else %>
+
+          <%= image_tag pet.image_url, class: "pet-image" %>
+
+        <% end %>
         <div class="pet-text">
           <h2><%= pet.name %></h2>
           <p><%= pet.breed %></p>
