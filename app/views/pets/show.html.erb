@@ -51,6 +51,8 @@
         <% end %>
       </div>
     </div>
-
+    <div>
+      <%= link_to "Kill my pet", pet_path(@pet), data: {turbo_method: :delete, confirm: 'Are you sure?'} if policy(@pet).destroy? %>
+    </div>
   </div>
 </div>
