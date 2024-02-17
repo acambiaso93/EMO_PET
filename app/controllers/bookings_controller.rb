@@ -9,17 +9,17 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @my_bookings = current_user.bookings
-  end
-
-  def update
-    authorize @booking
+    @my_bookings = policy_scope(Booking)
   end
 
   def destroy
     authorize @booking
     @booking.destroy
     redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
+  end
+
+  def new
+    @booking = Booking.new
   end
 
   def create
