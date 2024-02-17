@@ -21,7 +21,7 @@
       This is what they say about me:<br>
       <%= @pet.description %></div>
 
-<a href=<%= new_booking_path %> class="m-4 btn btn-outline-dark w-50 showcard-form-button">BOOK ME</a>    </div>
+      <a href=<%= new_bookings_path %> class="m-4 btn btn-outline-dark w-50 showcard-form-button">BOOK ME</a>    </div>
      <div>
       <% if @pet.image_url.nil? %>
         <%= cl_image_tag @pet.photo.key, width: 400%>
