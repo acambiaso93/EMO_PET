@@ -1,0 +1,41 @@
+/* Rectangle 5 */
+.dashboard-container {
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 1035px;
+  height: 1448px;
+  left: 202px;
+  top: 187px;
+
+  border: 1px solid #000000;
+  border-radius: 40px;
+
+  .line {
+    position: absolute;
+    width: 1034px;
+    height: 0px;
+    left: 202px;
+    top: 279px;
+
+    border: 1px solid #000000;
+  }
+}
+
+.title {
+  position: absolute;
+  width: 597px;
+  height: 454px;
+  left: 223px;
+  top: 227px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #000000;
+}

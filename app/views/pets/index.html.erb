@@ -16,7 +16,7 @@
   <div class="pet-container">
     <% @pets.each do |pet| %>
       <%= link_to pet_path(pet), class: "pet-card" do %>
-        <% if pet.image_url.empty? %>
+        <% if pet.image_url.nil? %>
           <%= cl_image_tag pet.photo.key, class: "pet-image"%>
 
         <% else %>
