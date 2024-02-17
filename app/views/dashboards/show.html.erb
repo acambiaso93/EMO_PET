@@ -2,26 +2,30 @@
   <div class="row">
     <div class="col-3">
       <strong>MENU</strong>
-      <div class="my-4">
-        <div class="d-flex align-items-center my-4">
-          <i class="fa-solid fa-calendar mx-2"></i><p class="my-0">MY BOOKINGS</p>
-        </div>
+
+          <button class="dashboard-button d-flex">
+            <i class="fa-solid fa-calendar mx-2"></i><p class="my-0">MY BOOKINGS</p>
+          </button>
 
 
-        <div class="d-flex align-items-center my-4">
-          <i class="fa-solid fa-paw mx-2"></i><p class="my-0">MY PETS</p>
-        </div>
+        <button class="dashboard-button d-flex">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-paw mx-2"></i><p class="my-0">MY PETS</p>
+          </div>
+        </button>
 
 
-        <div class="d-flex align-items-center my-4">
-          <i class="fa-solid fa-message mx-2"></i><p class="my-0">ADD A NEW PET</p>
-        </div>
+        <button class="dashboard-button d-flex">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-message mx-2"></i><p class="my-0">ADD A NEW PET</p>
+          </div>
+        </button>
 
-      </div>
+
       <br>
       <p>Account & Profile</p>
 
-      <strong><%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}%></strong>
+      <strong id="booking-navbar"><%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}%></strong>
     </div>
 
     <div class="col-9">
@@ -29,12 +33,15 @@
 
       <h2>My Bookings</h2>
 
-        <div class="pet-container" id="booking-card">
+        <div class="pet-container">
           <% @my_bookings.each do |booking| %>
-            <%= link_to booking_path(booking), class: "pet-card" do %>
+
+              <div class="card-my-bookings">
+                
+              </div>
 
               <% if booking.pet.image_url.nil? %>
-                <%= cl_image_tag booking.pet.photo.key, class: "pet-image"%>
+                <%= cl_image_tag booking.pet.photo.key, id: "booking-img", class: "pet-image"%>
               <% else %>
                 <%= image_tag booking.pet.image_url, class: "pet-image" %>
               <% end %>
