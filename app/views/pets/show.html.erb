@@ -1,3 +1,6 @@
+<div>
+  <%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, root_path %>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-8">
@@ -71,6 +74,7 @@
         <% end %>
       </div>
     </div>
+
 
     <div>
       <%= link_to "Kill my pet", pet_path(@pet), data: {turbo_method: :delete, confirm: 'Are you sure?'} if policy(@pet).destroy? %>

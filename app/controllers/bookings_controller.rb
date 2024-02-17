@@ -1,24 +1,33 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_booking, only: [:destroy]
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
 
   def show
-    @bookings = Booking.find(params[:id])
+    @booking = Booking.find(params[:id])
+    @pet = @booking.pet
     @booking = Booking.new
   end
 
   def index
-    @my_bookings = current_user.bookings
+    @my_bookings = policy_scope(Booking)
   end
 
   def destroy
+    authorize @booking
     @booking.destroy
     redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
+  end
+
+  def new
+    @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to bookings_path
     else
