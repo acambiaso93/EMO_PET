@@ -26,7 +26,7 @@
       <br>
       <p>Account & Profile</p>
 
-      <strong id="booking-navbar"><%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}%></strong>
+      <strong id="booking-navbar"> <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete} %></strong>
     </div>
 
     <div class="col-9">
@@ -36,9 +36,7 @@
 
         <div class="pet-container">
           <% @my_bookings.each do |booking| %>
-
               <div class="card-my-bookings">
-                
               </div>
 
               <% if booking.pet.image_url.nil? %>
@@ -56,7 +54,6 @@
                   <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
                 </a>
               </div>
-            <% end %>
           <% end %>
         </div>
 
@@ -92,11 +89,4 @@
   </div>
 
 </div>
-
-
 </div>
-
-
-
-
-

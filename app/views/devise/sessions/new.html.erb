@@ -1,0 +1,28 @@
+<div class="container-sm">
+  <div class="d-flex flex-column rounded-5 showcard">
+    <div class="ps-4 py-3">
+      <h2>LOG IN</h2>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="m-4">
+          <%= f.input :email,
+                      class: "form__input",
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      class: "form__input",
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class=" m-4 btn btn-outline-dark w-25 showcard-form-button">
+          <%= f.button :submit, "LOG IN" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
