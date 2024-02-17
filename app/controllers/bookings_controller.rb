@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:destroy]
 
   def show
+    authorize @booking
     @bookings = Booking.find(params[:id])
     @booking = Booking.new
   end
@@ -11,7 +12,12 @@ class BookingsController < ApplicationController
     @my_bookings = current_user.bookings
   end
 
+  def update
+    authorize @booking
+  end
+
   def destroy
+    authorize @booking
     @booking.destroy
     redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
   end
@@ -19,6 +25,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to bookings_path
     else
