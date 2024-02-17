@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   root "pets#index"
 
-  resources :pets, only: [:index, :show, :new, :create]
+  resources :pets, only: [:index, :show, :new, :create, :destroy]
 
   resources :bookings, only: [:index, :create, :update, :destroy, :show] do
     resources :reviews, only: [:new, :create, :show]
