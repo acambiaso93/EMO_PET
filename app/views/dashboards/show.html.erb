@@ -28,7 +28,7 @@
 
       <h2>My Bookings</h2>
 
-        <div class="pet-container">
+        <div class="pet-container" id="booking-card">
           <% @my_bookings.each do |booking| %>
             <%= link_to booking_path(booking), class: "pet-card" do %>
               <%= image_tag booking.pet.image_url, class: "pet-image" %>
