@@ -65,6 +65,11 @@
         <% end %>
       </div>
     </div>
+
+    <div>
+      <%= link_to "Kill my pet", pet_path(@pet), data: {turbo_method: :delete, confirm: 'Are you sure?'} if policy(@pet).destroy? %>
+    </div>
+
   </div>
 
   <h3>You can pick me up here</h3>
@@ -72,6 +77,7 @@
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
 
   </div>
 </div>
