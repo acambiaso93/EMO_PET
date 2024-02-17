@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
   def destroy
     authorize @booking
     @booking.destroy
-    redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
+    redirect_to dashboard_path, notice: 'You dont like the pet anymore!.'
   end
 
   def new

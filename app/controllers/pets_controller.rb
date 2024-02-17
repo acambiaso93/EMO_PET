@@ -53,7 +53,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     authorize @pet
     @pet.destroy
-    redirect_to root_path, notice: 'Pet passed away.'
+    redirect_to dashboard_path, notice: 'Pet passed away.'
   end
 
   private
