@@ -9,8 +9,8 @@
     <% if user_signed_in? %>
       <div class="d-flex">
         <%= link_to "Log out", destroy_user_session_path, class: "nav-link navbar-nav me-3", data: {turbo_method: :delete}%>
-        <%= link_to root_path do%>
-          <%= image_tag "avatar1.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= link_to dashboard_path do %>
+          <%= image_tag "avatar1.jpeg", class: "avatar" %>
         <% end %>
       </div>
     <% else %>
