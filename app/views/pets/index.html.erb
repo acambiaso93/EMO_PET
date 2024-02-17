@@ -1,6 +1,7 @@
  <div class="container-main">
-  <div class="row justify-content-center">
-  <div class="col-sm-8">
+  <div class="d-flex flex-column justify-content-left caption">
+    Discover, Connect, and Book:<br>
+Find Your Ideal Pet Companion with Ease
     <%= form_with url: pets_path, method: :get, class: "search__container" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -10,7 +11,6 @@
         %>
     <% end %>
     <button class="map-button" onclick="scrollToMap()">...or take me to map</button>
-</div>
   </div>
 </div>
   <div class="pet-container">

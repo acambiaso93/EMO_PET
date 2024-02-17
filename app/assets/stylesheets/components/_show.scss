@@ -1,8 +1,21 @@
 .showcard {
+  border: 1px solid;
+  margin: 50px 50px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+}
+
+.showcard-form-button {
   transition: all 250ms ease-in-out;
 
   &:hover {
       background-color: rgb(0, 0, 0);
       color: white;
     }
+}
+
+.border-bottom-custom {
+  border-bottom: 1px solid black;
 }
