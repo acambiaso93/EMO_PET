@@ -42,8 +42,6 @@
 
 .card-my-bookings {
   height: 200px;
-  width: 100%;
-  border: 1px solid #000000;
 
 }
 
@@ -51,4 +49,8 @@
   height: 100%;
   width: 200px;
   object-fit: cover;
+}
+
+#booking-navbar > a {
+  color: #000000;
 }
