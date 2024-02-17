@@ -1,7 +1,10 @@
 .card-show {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 8px 8px;
-  overflow: hidden;
+  img {
+    border-radius: 20px;
+    width: 300px;
+    position: sticky;
+    top: 0;
+  }
 }
 
 .card-info {
@@ -13,4 +16,3 @@
   border-radius: 8px 8px;
   padding: 20px;
 }
-
