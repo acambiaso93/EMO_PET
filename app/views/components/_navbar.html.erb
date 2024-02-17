@@ -1,29 +1,16 @@
-<nav class="navbar sticky-top navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-dark bg-dark text-white">
   <div class="container-fluid d-flex space-between">
     <div>
       <a class="navbar-brand">
-        <%= link_to '<i class="fa-solid fa-otter"></i>  EmoPet'.html_safe, root_path %>
+        <%= link_to '<i class="fa-solid fa-otter text-white"></i>  EmoPet'.html_safe, root_path %>
       </a>
     </div>
 
     <% if user_signed_in? %>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <%= image_tag "avatar1.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="d-flex justify-content-end">
-          <ul class="navbar-nav ">
-            <li class="nav-item dropdown">
-              <ul class="dropdown-menu-toggle text-bg-dark" aria-labelledby="navbarDropdown">
-                <%= link_to "Profile", "#", class: "dropdown-item" %>
-                <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
-                <%= link_to "Add a Pet", new_pet_path, class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, class: "nav-link navbar-nav", data: {turbo_method: :delete}%>
-              </ul>
-            </li>
-          </ul>
-        </div>
+      <div class="d-flex">
+        <%= link_to dashboard_path do %>
+          <%= image_tag "avatar1.jpeg", class: "avatar" %>
+        <% end %>
       </div>
     <% else %>
       <div >

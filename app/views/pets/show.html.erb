@@ -1,40 +1,66 @@
+<div>
+  <%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, root_path %>
+</div>
 <div class="container">
 <div class="d-flex flex-column rounded-5 showcard">
   <div class="ps-4 py-3 border-bottom-custom">
     <span><%= @pet.name %></span></div>
-  <div class="d-flex showcard-row border-bottom-custom">
-    <div class="d-flex flex-column justify-content-between">
-    <div class="ps-4 py-3">
-      <% breed_name = @pet.breed.downcase %>
-      <% if ['a', 'e', 'i', 'o', 'u'].include?(breed_name[0]) %>
-      I am an <%= breed_name %> and this is where I live:
-      <% else %>
-      I am a <%= breed_name %> and this is where I live:
-      <% end %><br>
-      <%= @pet.address %> <br><br>
-      This is what they say about me:<br>
-      <%= @pet.description %></div>
-      <a href="#" class="m-4 btn btn-outline-dark w-25 showcard-form-button ">BOOK ME</a>
-    </div>
+    <div class="d-flex showcard-row border-bottom-custom">
+      <div class="d-flex flex-column justify-content-between">
+      <div class="ps-4 py-3">
+        <% breed_name = @pet.breed.downcase %>
+        <% if ['a', 'e', 'i', 'o', 'u'].include?(breed_name[0]) %>
+        I am an <%= breed_name %> and this is where I live:
+        <% else %>
+        I am a <%= breed_name %> and this is where I live:
+        <% end %><br>
+        <%= @pet.address %> <br><br>
+        This is what they say about me:<br>
+        <%= @pet.description %></div>
+        <a href="#" class="m-4 btn btn-outline-dark w-25 showcard-form-button ">BOOK ME</a>
+
+      <div class="col-12 col-lg-4">
+        <div class="card-booking">
+          <h3>
+            <span class="bookmark">Book me!</span>
+            When do you want to have me?
+          </h3>
+          <div id="booking-form" style="display: none;">
+            <%= render "bookings/form", pet: @pet, booking: @booking %>
+          </div>
+        </div>
+      </div>
     <div><%= image_tag @pet.image_url, width: 400 %></div>
   </div>
 
   <div class="ps-4 py-3 border-bottom-custom"><span>Reviews</span><br>
-  <% if @pet.bookings.empty? %>
-          <span>no reviews</span>
-        <% else %>
-          <% @pet.bookings.each do |booking| %>
-           <% next if booking.review.nil? %>
-            <%= render "reviews/card", review: booking.review %>
-          <% end %>
-        <% end %></div>
+    <% if @pet.bookings.empty? %>
+      <span>no reviews</span>
+    <% else %>
+      <% @pet.bookings.each do |booking| %>
+       <% next if booking.review.nil? %>
+        <%= render "reviews/card", review: booking.review %>
+      <% end %>
+    <% end %>
+   </div>
   <div class="ps-4 py-3"><span>You can find me here:</span></div>
-  <div><div class="ps-4 py-3 overflow-hidden" style="width: 100%; height: 600px;"
+  <div>
+    <div class="ps-4 py-3 overflow-hidden" style="width: 100%; height: 600px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div></div>
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
 </div>
+
+    <div>
+      <%= link_to "Kill my pet", pet_path(@pet), data: {turbo_method: :delete, confirm: 'Are you sure?'} if policy(@pet).destroy? %>
+    </div>
+
+  <h3>You can pick me up here</h3>
+  <div class="my-3" style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
 
  

@@ -11,11 +11,13 @@ Rails.application.routes.draw do
 
   root "pets#index"
 
-  resources :pets, only: [:index, :show, :new, :create]
+  resources :pets, only: [:index, :show, :new, :create, :destroy]
 
   resources :bookings, only: [:index, :create, :update, :destroy, :show] do
     resources :reviews, only: [:new, :create, :show]
   end
 
   resources :reviews, only: [:destroy]
+
+  get "dashboard", to: "dashboards#show"
 end

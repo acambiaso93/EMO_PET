@@ -1,7 +1,10 @@
 .card-show {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 8px 8px;
-  overflow: hidden;
+  img {
+    border-radius: 20px;
+    width: 300px;
+    position: sticky;
+    top: 0;
+  }
 }
 
 .card-info {
@@ -14,3 +17,29 @@
   padding: 20px;
 }
 
+.pet-container-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+}
+
+.pet-card-dashboard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  min-height: 200px;
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.pet-image-booking {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: grayscale(100%);
+    transition: filter 0.5s, transform 0.5s;
+}
