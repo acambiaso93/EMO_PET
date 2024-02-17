@@ -34,36 +34,51 @@
 
       <h2>My Bookings</h2>
 
-        <div class="pet-container">
+        <div class="d-flex">
           <% @my_bookings.each do |booking| %>
 
-              <div class="card-my-bookings">
-                
-              </div>
+              <div class="card-my-bookings d-flex">
+                <div>
+                  <% if booking.pet.image_url.nil? %>
+                    <%= cl_image_tag booking.pet.photo.key, class: "img-my-bookings" %>
+                  <% else %>
+                    <%= image_tag booking.pet.image_url, class: "img-my-bookings" %>
+                  <% end %>
+                </div>
 
-              <% if booking.pet.image_url.nil? %>
-                <%= cl_image_tag booking.pet.photo.key, id: "booking-img", class: "pet-image"%>
-              <% else %>
-                <%= image_tag booking.pet.image_url, class: "pet-image" %>
-              <% end %>
+                <div class="info-my-bookings mx-3">
+                  <h2><%= booking.pet.name %></h2>
+                  <p><%= booking.pet.breed %></p>
+                </div>
 
-              <div class="pet-text">
-                <h2><%= booking.pet.name %></h2>
-                <p><%= booking.pet.breed %></p>
               </div>
-              <div>
-                <a>
-                  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
-                </a>
-              </div>
-            <% end %>
           <% end %>
         </div>
 
 
+
+
+                  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, data: {turbo_method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+
+
+
         <p>My Pets</p>
 
-        <div class="pet-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div>
           <% @my_pets.each do |pet| %>
             <%= link_to pet_path(pet), class: "pet-card" do %>
 
@@ -95,8 +110,3 @@
 
 
 </div>
-
-
-
-
-
