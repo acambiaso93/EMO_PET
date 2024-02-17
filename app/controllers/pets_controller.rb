@@ -41,8 +41,9 @@ class PetsController < ApplicationController
     @pet.user = current_user
     authorize @pet
 
+
     if @pet.save
-      redirect_to @pet, redirect_to: root_path
+      redirect_to pet_path(@pet)
     else
       render :new
     end
@@ -58,6 +59,6 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :description, :address, :image_url)
+    params.require(:pet).permit(:name, :breed, :description, :address, :image_url, :photo)
   end
 end
