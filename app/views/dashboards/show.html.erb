@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <strong>MENU</strong>
+      <div class="my-4">
+        <div class="d-flex align-items-center my-4">
+          <i class="fa-solid fa-calendar mx-2"></i><p class="my-0">MY BOOKINGS</p>
+        </div>
+
+
+        <div class="d-flex align-items-center my-4">
+          <i class="fa-solid fa-paw mx-2"></i><p class="my-0">MY PETS</p>
+        </div>
+
+
+        <div class="d-flex align-items-center my-4">
+          <i class="fa-solid fa-message mx-2"></i><p class="my-0">ADD A NEW PET</p>
+        </div>
+
+      </div>
+      <br>
+      <p>Account & Profile</p>
+
+      <strong><%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}%></strong>
+    </div>
+
+    <div class="col-9">
+      <h1>Welcome username!</h1>
+
+      <h2>My Bookings</h2>
+
+        <div class="pet-container" id="booking-card">
+          <% @my_bookings.each do |booking| %>
+            <%= link_to booking_path(booking), class: "pet-card" do %>
+
+              <% if booking.pet.image_url.nil? %>
+                <%= cl_image_tag booking.pet.photo.key, class: "pet-image"%>
+              <% else %>
+                <%= image_tag booking.pet.image_url, class: "pet-image" %>
+              <% end %>
+
+              <div class="pet-text">
+                <h2><%= booking.pet.name %></h2>
+                <p><%= booking.pet.breed %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <p>My Pets</p>
+
+        <div class="pet-container">
+          <% @my_pets.each do |pet| %>
+            <%= link_to pet_path(pet), class: "pet-card" do %>
+
+              <% if pet.image_url.nil? %>
+                <%= cl_image_tag pet.photo.key, class: "pet-image"%>
+              <% else %>
+                <%= image_tag pet.image_url, class: "pet-image" %>
+              <% end %>
+
+              <div class="pet-text">
+                <h2><%= pet.name %></h2>
+                <p><%= pet.breed %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+
+
+<button type="button" class="btn-close" aria-label="Close"></button>
