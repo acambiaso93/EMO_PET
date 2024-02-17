@@ -16,6 +16,17 @@
     }
 }
 
+.showcard-delete-button {
+  transition: all 250ms ease-in-out;
+  color: black;
+
+  &:hover {
+      background-color: rgb(255, 0, 0);
+      color: white;
+      border: 0px;
+    }
+}
+
 .border-bottom-custom {
   border-bottom: 1px solid black;
 }

@@ -28,7 +28,7 @@
       <br>
       <p>Account & Profile</p>
 
-      <strong id="booking-navbar"><%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}%></strong>
+      <strong id="booking-navbar"> <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete} %></strong>
     </div>
 
     <div id="bookings" class="col-9">
@@ -38,14 +38,12 @@
             <strong> WELCOME !</strong>
           </div>
 
-
           <div class="ps-4 py-3 border-bottom-custom">
             <strong> MY BOOKINGS </strong>
           </div>
 
           <div class="border-bottom-custom">
             <% @my_bookings.each do |booking| %>
-
               <div class="card-my-bookings d-flex border-bottom-custom">
                   <div>
                     <% if booking.pet.image_url.nil? %>
@@ -114,4 +112,5 @@
 
     </div>
     </div>
+
 </div>
